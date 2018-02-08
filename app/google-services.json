@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1051250241902",
+    "firebase_url": "https://moves-master.firebaseio.com",
+    "project_id": "moves-master",
+    "storage_bucket": "moves-master.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1051250241902:android:bc3978d99e1e074e",
+        "android_client_info": {
+          "package_name": "com.example.hesham.moves"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1051250241902-8jshe5av5a052g555mpborf3400colqn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hesham.moves",
+            "certificate_hash": "42cf196f7f3b527a0652628599cb66187d61db42"
+          }
+        },
+        {
+          "client_id": "1051250241902-dei8tni1t639n1k5bmr972r9jc5u163b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsI40DwYXlBFr5WlVZcMnKwHJ9wUoBvM0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1051250241902-dei8tni1t639n1k5bmr972r9jc5u163b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

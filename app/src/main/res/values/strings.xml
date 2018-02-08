@@ -1,0 +1,66 @@
+<resources>
+    <string name="app_name">Moves</string>
+    <string name="action_settings">Setting</string>
+    <string name="pref_show_label" translatable="false">Show Bass</string>
+    <string name="pref_show_key" translatable="false">Show_Bass</string>
+    <string name="Hidden" translatable="false">Hidden</string>
+    <string name="Popular">Popular</string>
+    <string name="TopRate">TopRate</string>
+    <string name="activityhistory">Favourit</string>
+    <string name="hint_name">Name</string>
+
+    <string name="hint_email">Email</string>
+
+    <string name="hint_password">Password</string>
+
+    <string name="hint_confirm_password">Confirm Password</string>
+
+    <string name="text_login">Login</string>
+
+    <string name="text_register">Register</string>
+
+    <string name="error_message_name">Enter Full Name</string>
+
+    <string name="error_message_email">Enter Valid Email</string>
+
+    <string name="error_message_age">Enter Age</string>
+
+    <string name="error_message_password">Enter Password</string>
+
+    <string name="success_message">Registration Successful</string>
+
+    <string name="text_not_member">No account yet? Create one</string>
+
+    <string name="text_already_member">Already a member? Login</string>
+
+    <string name="error_email_exists">Email Already Exists</string>
+
+    <string name="error_password_match">Password Does Not Matches</string>
+    <string name="logout">Logout</string>
+    <string name="error_valid_email_password">error in validation</string>
+    <string name="log_out">Logut</string>
+    <string name="default_status" translatable="false">Guinness</string>
+    <string name="appwidget_text" translatable="false">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+    <string name="History">History</string>
+    <string name="Title">Title</string>
+    <string name="Add">Add</string>
+    <string name="Clear_all">ClearAll</string>
+    <string name="Note_Added_Successfully">Note_Added_Successfully</string>
+    <string name="no_request">no_request</string>
+    <string name="check">check</string>
+    <string name="Step">step</string>
+    <string name="Movies_name">Movies name</string>
+    <string name="rate">8.1/10</string>
+    <string name="Descriptiom">Descriptiom</string>
+    <string name="Favourit">Favourit</string>
+    <string name="Reviews">Reviews</string>
+    <string name="Signin">Signin</string>
+    <string name="Signup">Signup</string>
+    <string name="Email">Email</string>
+    <string name="Password">Password</string>
+    <string name="author">author</string>
+    <string name="content">content</string>
+    <string name="Note">Note</string>
+
+</resources>
