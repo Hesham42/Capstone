@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scaleType="fitXY"
-        android:src="@drawable/splach" />
+        android:src="@drawable/bg_people" />
 
     <android.support.percent.PercentRelativeLayout
         android:layout_width="match_parent"
