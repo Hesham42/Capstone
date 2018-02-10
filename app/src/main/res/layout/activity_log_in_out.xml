@@ -12,7 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scaleType="fitXY"
-        android:src="@drawable/bg_people" />
+        android:src="@drawable/bg_people"
+        android:contentDescription="TODO" />
 
     <android.support.percent.PercentRelativeLayout
         android:layout_width="match_parent"
