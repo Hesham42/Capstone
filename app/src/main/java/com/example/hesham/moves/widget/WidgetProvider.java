@@ -26,6 +26,7 @@ public class WidgetProvider extends AppWidgetProvider {
         final int N = appWidgetIds.length;
         for (int i = 0; i < N; ++i) {
 
+
             RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.movies_widget_provider);
 
             Intent intent = new Intent(context, Service.class);
