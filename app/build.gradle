@@ -13,8 +13,8 @@ android {
     }
 
     defaultConfig {
-        buildConfigField("String", "API_KEY", API_KEY)
-        buildConfigField("String", "API_KEY_YOUTUBE", API_KEY_YOUTUBE)
+        buildConfigField("String", "API_KEY", "28f81313599c7074d6380330fe1dca22")
+        buildConfigField("String", "API_KEY_YOUTUBE", "AIzaSyBZb9_YCNPJzQyqEWXn7O8Fmott0a9FQqY")
         applicationId "com.example.hesham.moves"
         minSdkVersion 17
         targetSdkVersion 26
