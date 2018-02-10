@@ -13,8 +13,8 @@ android {
     }
 
     defaultConfig {
-        buildConfigField("String", "API_KEY", "28f81313599c7074d6380330fe1dca22")
-        buildConfigField("String", "API_KEY_YOUTUBE", "AIzaSyBZb9_YCNPJzQyqEWXn7O8Fmott0a9FQqY")
+//        buildConfigField("String", "API_KEY", "28f81313599c7074d6380330fe1dca22")
+//        buildConfigField("String", "API_KEY_YOUTUBE", "AIzaSyBZb9_YCNPJzQyqEWXn7O8Fmott0a9FQqY")
         applicationId "com.example.hesham.moves"
         minSdkVersion 17
         targetSdkVersion 26
@@ -64,10 +64,4 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 
 }
-
-
-
-
-
-
 apply plugin: 'com.google.gms.google-services'

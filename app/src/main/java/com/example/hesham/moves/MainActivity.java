@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
     List<ResultModel> TopRateResult = new ArrayList<>();
     List<ResultModel> Favourit = new ArrayList<>();
     int flag=0;
-    public static final String API_KEY = BuildConfig.API_KEY;
+    public static final String API_KEY = "28f81313599c7074d6380330fe1dca22";
 
 
 
