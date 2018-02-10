@@ -62,7 +62,7 @@
                 android:textColor="@color/colorAccentTrans"
                 android:layout_gravity="end"
                 android:background="@color/colorPrimaryDark"
-                android:id="@+id/Addbut"/>
+                android:id="@+id/Add"/>
             <android.support.v7.widget.AppCompatButton
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -72,9 +72,8 @@
                 android:textColor="@color/colorAccentTrans"
                 android:layout_gravity="end"
                 android:background="@color/colorPrimaryDark"
-                android:id="@+id/Clearbut"
+                android:id="@+id/Clean"
                 />
-
         </LinearLayout>
         <TextView
             android:layout_marginTop="13dp"

@@ -24,21 +24,17 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class Note_Activity extends AppCompatActivity {
-    @BindView(R.id.Addbut)
-    Button ADDButn;
-
-    @BindView(R.id.Clearbut)
-    Button clearBut;
-
     @BindView(R.id.Title)
     EditText Title;
-
-    @BindView(R.id.Step)
-    EditText Step;
-
     @BindView(R.id.noteList)
     ListView noteslist;
+    @BindView(R.id.Step)
+    EditText Step;
     NotesAdapter adapter;
+    @BindView(R.id.Add)
+    Button ADDButn;
+    @BindView(R.id.Clean)
+    Button clearBut;
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mMessagesDatabaseReference;
     ChildEventListener mChildEventListner;
@@ -56,7 +52,8 @@ public class Note_Activity extends AppCompatActivity {
         FirebaseUser user = mAuth.getCurrentUser();
         try {
             String currentUserEmail = user.getEmail().replace(".", "_");
-            mMessagesDatabaseReference = mFirebaseDatabase.getReference().child("message/" + currentUserEmail);
+            mMessagesDatabaseReference =
+                    mFirebaseDatabase.getReference().child("message/" + currentUserEmail);
 
         }catch (Exception e){
             Toast.makeText(this, R.string.check, Toast.LENGTH_SHORT).show();
@@ -95,7 +92,6 @@ public class Note_Activity extends AppCompatActivity {
                 if (Title.getText().toString().equals("") || Step.getText().toString().equals("")) {
                     Toast.makeText(Note_Activity.this, R.string.no_request, Toast.LENGTH_SHORT).show();
                 } else {
-
                     String title = Title.getText().toString();
                     String step = Step.getText().toString();
                     NoteModel noteModel = new NoteModel(title, step);
