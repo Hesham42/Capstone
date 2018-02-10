@@ -3,7 +3,6 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/layout_list_item">
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -13,9 +12,6 @@
         android:textSize="18dp"
         android:textColor="@color/colorPrimaryDark"
         android:id="@+id/Tit"/>
-
-
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -26,6 +22,4 @@
         android:layout_weight="1"
         android:text="@string/success_message"
         android:id="@+id/Steps"/>
-
-
 </LinearLayout>

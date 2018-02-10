@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">افلام</string>
+    <string name="action_settings">اعدادات</string>
+    <string name="Popular">محبب</string>
+    <string name="TopRate">اعلى تقيم</string>
+    <string name="activityhistory">المراد</string>
+
+    <string name="hint_name">الاسم</string>
+
+    <string name="hint_email">البريد الالكترونى</string>
+
+    <string name="hint_password">كلمه السر</string>
+
+    <string name="hint_confirm_password"> تاكيد كلمه السر</string>
+
+    <string name="text_login">دخول الحساب</string>
+
+    <string name="text_register">تسجيل حساب </string>
+
+    <string name="error_message_name">ادخل الاسم كامل </string>
+
+    <string name="error_message_email">ادخل البريد الالكترونى  كامل </string>
+
+    <string name="error_message_age">ادخل العمر </string>
+
+    <string name="error_message_password">ادخل كلمه السر</string>
+
+    <string name="success_message">تم التسيجيل بنجاح</string>
+
+    <string name="text_not_member">لا يوجد بريد سجل </string>
+
+    <string name="text_already_member">انت بالفعل موجود</string>
+
+    <string name="error_email_exists">انت بالفعل موجود</string>
+
+    <string name="error_password_match">كلمه السر غير صحيحه</string>
+    <string name="logout">تسجيل الخروج</string>
+    <string name="error_valid_email_password">خطاء فى الادخال </string>
+    <string name="log_out">Logut</string>
+    <string name="add_widget" translatable="false">اضافه وجه خارجيه </string>
+    <string name="History" translatable="false">سجل الملحوظات</string>
+    <string name="Title" translatable="false">العنوان</string>
+    <string name="Add" translatable="false">اضافه</string>
+    <string name="Clear_all" translatable="false">مسح الكل </string>
+    <string name="Note_Added_Successfully" translatable="false">تم اضافه هذه بنجاح</string>
+    <string name="no_request" translatable="false">لا يوجد استقبال </string>
+    <string name="check" translatable="false">تم التاكيد</string>
+    <string name="Step" translatable="false">الملحوظه</string>
+    <string name="Movies_name" translatable="false">اسم الفيلم</string>
+    <string name="rate">8.1/10</string>
+    <string name="Descriptiom">الوصف</string>
+    <string name="Favourit">المفضل</string>
+    <string name="Reviews">التقيم</string>
+    <string name="Signin">الدخول </string>
+    <string name="Signup">تسجيل الدخول</string>
+    <string name="Email">البريد الالكترونى</string>
+    <string name="Password">كلمه السر</string>
+    <string name="author">الكاتب </string>
+    <string name="content">المحتوى</string>
+    <string name="Note">ملحوظه</string>
+
+
+</resources>

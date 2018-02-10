@@ -26,7 +26,7 @@ public class WidgetListProvider implements RemoteViewsService.RemoteViewsFactory
 
 
 
-    private ArrayList<NoteAttr> noteAttrList = new ArrayList();
+    private ArrayList<NoteModel> noteModelList = new ArrayList();
 
 
     private Context context;
@@ -59,8 +59,8 @@ public class WidgetListProvider implements RemoteViewsService.RemoteViewsFactory
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
 
-                NoteAttr noteAttr = dataSnapshot.getValue(NoteAttr.class);
-                noteAttrList.add(noteAttr);
+                NoteModel noteModel = dataSnapshot.getValue(NoteModel.class);
+                noteModelList.add(noteModel);
 
             }
 
@@ -104,8 +104,8 @@ public class WidgetListProvider implements RemoteViewsService.RemoteViewsFactory
         final RemoteViews remoteView = new RemoteViews(
                 context.getPackageName(),  R.layout.list_item);
 
-        remoteView.setTextViewText(R.id.Tit, noteAttrList.get(position).getTitle());
-        remoteView.setTextViewText(R.id.Steps, noteAttrList.get(position).getStep());
+        remoteView.setTextViewText(R.id.Tit, noteModelList.get(position).getTitle());
+        remoteView.setTextViewText(R.id.Steps, noteModelList.get(position).getStep());
 
 
         return remoteView;
@@ -113,7 +113,7 @@ public class WidgetListProvider implements RemoteViewsService.RemoteViewsFactory
 
     @Override
     public int getCount() {
-        return noteAttrList.size();
+        return noteModelList.size();
     }
 
 

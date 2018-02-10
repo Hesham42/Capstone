@@ -15,8 +15,8 @@ import java.util.List;
  * Created by root on 2/8/18.
  */
 
-public class NotesAdapter extends ArrayAdapter<NoteAttr> {
-    public NotesAdapter(Context context, int resource, List<NoteAttr> objects) {
+public class NotesAdapter extends ArrayAdapter<NoteModel> {
+    public NotesAdapter(Context context, int resource, List<NoteModel> objects) {
         super(context, resource, objects);
     }
 
@@ -30,9 +30,9 @@ public class NotesAdapter extends ArrayAdapter<NoteAttr> {
         TextView Title = (TextView) convertView.findViewById(R.id.Tit);
         TextView Step = (TextView) convertView.findViewById(R.id.Steps);
 
-        NoteAttr noteAttr = getItem(position);
-        Title.setText(noteAttr.getTitle());
-        Step.setText(noteAttr.getStep());
+        NoteModel noteModel = getItem(position);
+        Title.setText(noteModel.getTitle());
+        Step.setText(noteModel.getStep());
 
         return convertView;
     }

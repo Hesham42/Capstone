@@ -39,7 +39,7 @@
                 android:resource="@xml/widget_provider_info" />
         </receiver>
 
-        <activity android:name=".widget.History" />
+        <activity android:name=".widget.Note_Activity" />
         <activity android:name=".SignInAndSignUp">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

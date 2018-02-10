@@ -23,48 +23,37 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class History extends AppCompatActivity {
+public class Note_Activity extends AppCompatActivity {
     @BindView(R.id.Addbut)
-    Button addBut;
+    Button ADDButn;
+
     @BindView(R.id.Clearbut)
     Button clearBut;
+
     @BindView(R.id.Title)
     EditText Title;
+
     @BindView(R.id.Step)
     EditText Step;
+
     @BindView(R.id.noteList)
     ListView noteslist;
-
     NotesAdapter adapter;
-
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mMessagesDatabaseReference;
-
-
     ChildEventListener mChildEventListner;
-
-
     FirebaseAuth mAuth;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
         ButterKnife.bind(this);
-
-
-
-
-        List<NoteAttr> list_of_noteAttrs = new ArrayList<>();
-        adapter = new NotesAdapter(this, R.layout.list_item, list_of_noteAttrs);
+        List<NoteModel> list_of_noteModels = new ArrayList<>();
+        adapter = new NotesAdapter(this, R.layout.list_item, list_of_noteModels);
         noteslist.setAdapter(adapter);
-
-
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
-
         try {
             String currentUserEmail = user.getEmail().replace(".", "_");
             mMessagesDatabaseReference = mFirebaseDatabase.getReference().child("message/" + currentUserEmail);
@@ -72,30 +61,22 @@ public class History extends AppCompatActivity {
         }catch (Exception e){
             Toast.makeText(this, R.string.check, Toast.LENGTH_SHORT).show();
         }
-
         mChildEventListner = new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-
-                NoteAttr noteAttr = dataSnapshot.getValue(NoteAttr.class);
-                adapter.add(noteAttr);
+                NoteModel noteModel = dataSnapshot.getValue(NoteModel.class);
+                adapter.add(noteModel);
             }
-
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
             }
-
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
-
             }
-
             @Override
             public void onChildMoved(DataSnapshot dataSnapshot, String s) {
 
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
@@ -107,28 +88,19 @@ public class History extends AppCompatActivity {
             Toast.makeText(this, R.string.check, Toast.LENGTH_SHORT).show();
         }
 
-
-        addBut.setOnClickListener(new View.OnClickListener() {
+        ADDButn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 if (Title.getText().toString().equals("") || Step.getText().toString().equals("")) {
-                    Toast.makeText(History.this, R.string.no_request, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Note_Activity.this, R.string.no_request, Toast.LENGTH_SHORT).show();
                 } else {
 
                     String title = Title.getText().toString();
                     String step = Step.getText().toString();
-//
-
-
-
-
-                    NoteAttr noteAttr = new NoteAttr(title, step);
-
-                    mMessagesDatabaseReference.push().setValue(noteAttr);
-
-
-                    Toast.makeText(History.this, R.string.Note_Added_Successfully, Toast.LENGTH_LONG).show();
+                    NoteModel noteModel = new NoteModel(title, step);
+                    mMessagesDatabaseReference.push().setValue(noteModel);
+                    Toast.makeText(Note_Activity.this, R.string.Note_Added_Successfully, Toast.LENGTH_LONG).show();
                     Title.setText("");
                     Step.setText("");
                 }
@@ -141,7 +113,6 @@ public class History extends AppCompatActivity {
                 mMessagesDatabaseReference.removeValue();
                 adapter.clear();
                 adapter.notifyDataSetChanged();
-
             }
         });
     }
