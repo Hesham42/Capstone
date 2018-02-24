@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/de16"
         android:padding="@dimen/de16"
-        android:text="@string/Note" />
+        android:hint="@string/Note"/>
 
     <Button
         android:layout_width="match_parent"
