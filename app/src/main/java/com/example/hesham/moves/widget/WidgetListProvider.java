@@ -45,8 +45,6 @@ public class WidgetListProvider implements RemoteViewsService.RemoteViewsFactory
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
-//        if (user == null)
-//            return null;
         try {
             String currentUserEmail = user.getEmail().replace(".", "_");
             mMessagesDatabaseReference = mFirebaseDatabase.getReference().child("message/" + currentUserEmail);
