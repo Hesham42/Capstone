@@ -10,10 +10,6 @@ import android.widget.RemoteViewsService;
 
 public class Service extends RemoteViewsService {
 
-      /*
-* call the Adapter of the listview
-*  Adapter is ListProvider
-* */
 
     @Override
     public RemoteViewsFactory onGetViewFactory(Intent intent) {
