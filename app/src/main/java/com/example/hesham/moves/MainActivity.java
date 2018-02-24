@@ -16,7 +16,7 @@ import com.example.hesham.moves.adapter.AdapterOFAllMovies.MoviesAdapter;
 import com.example.hesham.moves.adapter.RecyclerTouchListener;
 import com.example.hesham.moves.model.modelaLLmovesdata.MovesModel;
 import com.example.hesham.moves.model.modelaLLmovesdata.ResultModel;
-import com.example.hesham.moves.widget.Note_Activity;
+import com.example.hesham.moves.widget.NoteActiviy;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -227,7 +227,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
         if (id==R.id.History){
-            Intent intent= new Intent(this, Note_Activity.class);
+            Intent intent= new Intent(this, NoteActiviy.class);
             startActivity(intent);
         }
 

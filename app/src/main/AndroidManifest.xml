@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.hesham.moves">
+
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
@@ -19,8 +20,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
-            android:launchMode="singleTop">
-          </activity>
+            android:launchMode="singleTop" />
         <activity
             android:name=".Details"
             android:parentActivityName=".MainActivity">
@@ -28,18 +28,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-
-        <receiver android:name=".widget.WidgetProvider">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            </intent-filter>
-
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/widget_provider_info" />
-        </receiver>
-
-        <activity android:name=".widget.Note_Activity" />
         <activity android:name=".SignInAndSignUp">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -48,11 +36,18 @@
             </intent-filter>
         </activity>
 
-        <service
-            android:name=".widget.Service"
-            android:permission="android.permission.BIND_REMOTEVIEWS" />
-        />
+        <receiver android:name=".widget.widgetprovider">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
 
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widgetprovider_info" />
+        </receiver>
+
+        <activity android:name=".widget.NoteActiviy" />
+        <activity android:name=".widget.ListeNote"></activity>
     </application>
 
 </manifest>

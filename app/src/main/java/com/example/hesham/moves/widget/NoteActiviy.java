@@ -1,11 +1,11 @@
 package com.example.hesham.moves.widget;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.hesham.moves.R;
@@ -17,36 +17,24 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class Note_Activity extends AppCompatActivity {
-    @BindView(R.id.Title)
-    EditText Title;
-    @BindView(R.id.noteList)
-    ListView noteslist;
-    @BindView(R.id.Step)
-    EditText Step;
-    NotesAdapter adapter;
+public class NoteActiviy extends AppCompatActivity {
+    @BindView(R.id.NoteTitle)
+    EditText editText;
     @BindView(R.id.Add)
     Button ADDButn;
-    @BindView(R.id.Clean)
-    Button clearBut;
     private FirebaseDatabase mFirebaseDatabase;
     private DatabaseReference mMessagesDatabaseReference;
     ChildEventListener mChildEventListner;
     FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_history);
+        setContentView(R.layout.activity_note);
         ButterKnife.bind(this);
-        List<NoteModel> list_of_noteModels = new ArrayList<>();
-        adapter = new NotesAdapter(this, R.layout.list_item, list_of_noteModels);
-        noteslist.setAdapter(adapter);
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
@@ -61,9 +49,8 @@ public class Note_Activity extends AppCompatActivity {
         mChildEventListner = new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                NoteModel noteModel = dataSnapshot.getValue(NoteModel.class);
-                adapter.add(noteModel);
-            }
+                ModelNote noteModel = dataSnapshot.getValue(ModelNote.class);
+               }
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
             }
@@ -89,27 +76,23 @@ public class Note_Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (Title.getText().toString().equals("") || Step.getText().toString().equals("")) {
-                    Toast.makeText(Note_Activity.this, R.string.no_request, Toast.LENGTH_SHORT).show();
+                if (editText.getText().toString().equals("") ) {
+                    Toast.makeText(NoteActiviy.this, R.string.no_request, Toast.LENGTH_SHORT).show();
                 } else {
-                    String title = Title.getText().toString();
-                    String step = Step.getText().toString();
-                    NoteModel noteModel = new NoteModel(title, step);
+                    String title = editText.getText().toString();
+                    ModelNote noteModel = new ModelNote(title);
                     mMessagesDatabaseReference.push().setValue(noteModel);
-                    Toast.makeText(Note_Activity.this, R.string.Note_Added_Successfully, Toast.LENGTH_LONG).show();
-                    Title.setText("");
-                    Step.setText("");
+                    Toast.makeText(NoteActiviy.this, R.string.Note_Added_Successfully, Toast.LENGTH_LONG).show();
+                    editText.setText("");
                 }
             }
         });
 
-        clearBut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mMessagesDatabaseReference.removeValue();
-                adapter.clear();
-                adapter.notifyDataSetChanged();
-            }
-        });
+    }
+
+
+    public void OnViewList(View view) {
+        Intent intent = new Intent(this, ListeNote.class);
+        startActivity(intent);
     }
 }

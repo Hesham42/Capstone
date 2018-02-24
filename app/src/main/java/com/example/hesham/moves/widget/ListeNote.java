@@ -1,10 +1,9 @@
 package com.example.hesham.moves.widget;
 
-import android.appwidget.AppWidgetManager;
-import android.content.Context;
-import android.content.Intent;
-import android.widget.RemoteViews;
-import android.widget.RemoteViewsService;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ListView;
 
 import com.example.hesham.moves.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -16,34 +15,32 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.List;
 
-/**
- * Created by root on 2/8/18.
- */
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
-public class WidgetListProvider implements RemoteViewsService.RemoteViewsFactory {
+public class ListeNote extends AppCompatActivity {
+    @BindView(R.id.NoteList)
+    ListView noteslist;
 
-
-
-
-    private ArrayList<NoteModel> noteModelList = new ArrayList();
-
-
-    private Context context;
-    private int appWidgetId;
+    List<ModelNote> noteModelNoteList;
+    Adapter adapter;
     ChildEventListener mChildEventListner;
     private DatabaseReference mMessagesDatabaseReference;
     FirebaseDatabase mFirebaseDatabase;
-
     // auth
     FirebaseAuth mAuth;
 
-    public WidgetListProvider(Context context, Intent intent) {
-        this.context = context;
-        appWidgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID,
-                AppWidgetManager.INVALID_APPWIDGET_ID);
 
-
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_liste_note);
+        ButterKnife.bind(this);
+        noteModelNoteList =new ArrayList<>();
+        adapter = new Adapter(this, R.layout.itemwidget, noteModelNoteList);
+        noteslist.setAdapter(adapter);
         mFirebaseDatabase = FirebaseDatabase.getInstance();
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
@@ -59,8 +56,9 @@ public class WidgetListProvider implements RemoteViewsService.RemoteViewsFactory
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
 
-                NoteModel noteModel = dataSnapshot.getValue(NoteModel.class);
-                noteModelList.add(noteModel);
+                ModelNote noteModelNote = dataSnapshot.getValue(ModelNote.class);
+                noteModelNoteList.add(noteModelNote);
+                adapter.notifyDataSetChanged();
 
             }
 
@@ -89,62 +87,13 @@ public class WidgetListProvider implements RemoteViewsService.RemoteViewsFactory
         }catch (Exception e){
 
         }
-    }
-
-    @Override
-    public void onCreate() {
 
     }
 
-    /*
-    * getView of Adapter where instead of View we return RemoteViews
-    */
-    @Override
-    public RemoteViews getViewAt(int position) {
-        final RemoteViews remoteView = new RemoteViews(
-                context.getPackageName(),  R.layout.list_item);
 
-        remoteView.setTextViewText(R.id.Tit, noteModelList.get(position).getTitle());
-        remoteView.setTextViewText(R.id.Steps, noteModelList.get(position).getStep());
-
-
-        return remoteView;
+    public void OnClearAll(View view) {
+        mMessagesDatabaseReference.removeValue();
+        adapter.clear();
+        adapter.notifyDataSetChanged();
     }
-
-    @Override
-    public int getCount() {
-        return noteModelList.size();
-    }
-
-
-
-    @Override
-    public void onDataSetChanged() {
-
-    }
-
-    @Override
-    public void onDestroy() {
-
-    }
-
-    @Override
-    public long getItemId(int position) {
-        return 0;
-    }
-
-    @Override
-    public boolean hasStableIds() {
-        return false;
-    }
-
-
-    @Override
-    public RemoteViews getLoadingView() {
-        return null;
-    }
-
-    @Override
-    public int getViewTypeCount() {
-        return 1;
-    }}
+}
