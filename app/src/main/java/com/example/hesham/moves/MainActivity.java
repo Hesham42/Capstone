@@ -178,7 +178,7 @@ public class MainActivity extends AppCompatActivity {
                         }
 
                     }else {
-                        Toast.makeText(getApplicationContext(), "ther is no internet Connection pleas open the internet  to Open the Ditails ", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(),getResources().getText(R.string.Nointernet), Toast.LENGTH_LONG).show();
 
                     }
                 }

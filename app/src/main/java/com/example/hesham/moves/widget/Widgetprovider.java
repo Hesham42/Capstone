@@ -13,7 +13,7 @@ import com.example.hesham.moves.R;
 /**
  * Implementation of App Widget functionality.
  */
-public class widgetprovider extends AppWidgetProvider {
+public class Widgetprovider extends AppWidgetProvider {
 
     static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
                                 int appWidgetId) {

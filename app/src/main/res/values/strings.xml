@@ -62,5 +62,6 @@
     <string name="author">author</string>
     <string name="content">content</string>
     <string name="Note">Note</string>
+    <string name="Nointernet">ther is no internet Connection pleas open the internet  to Open the Ditails</string>
 
 </resources>
