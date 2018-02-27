@@ -1,5 +1,6 @@
 package com.example.hesham.moves;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBar;
@@ -36,6 +37,7 @@ public class Details extends AppCompatActivity {
     ImageView img;
     TextView Title, data,Rate, Dec;
     MoviesAPI moviesAPI;
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -29,11 +29,6 @@
                 android:value=".MainActivity" />
         </activity>
         <activity android:name=".SignInAndSignUp">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <receiver android:name=".widget.Widgetprovider">
@@ -45,13 +40,21 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/widgetprovider_info" />
         </receiver>
+
         <service
             android:name=".widget.Service"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
         />
-
         <activity android:name=".widget.NoteActiviy" />
-        <activity android:name=".widget.ListeNote"></activity>
+        <activity android:name=".widget.ListeNote" />
+        <activity android:name=".SplashScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
     </application>
 
 </manifest>

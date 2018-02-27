@@ -29,7 +29,8 @@
             android:layout_alignParentLeft="true"
             android:background="@color/colorPrimaryTrans"
             android:orientation="horizontal"
-            app:layout_widthPercent="85%">
+            app:layout_widthPercent="85%"
+            tools:ignore="RtlHardcoded">
 
             <com.example.hesham.moves.Utilities.VerticalTextView
 
@@ -60,7 +61,8 @@
             android:background="@color/colorAccentTrans"
             android:gravity="center_horizontal"
             android:orientation="horizontal"
-            app:layout_widthPercent="15%">
+            app:layout_widthPercent="15%"
+            tools:ignore="RtlHardcoded">
 
             <com.example.hesham.moves.Utilities.VerticalTextView
                 android:id="@+id/tvSignupInvoker"
