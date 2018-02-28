@@ -11,43 +11,30 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.hesham.moves.Utilities.InternetConnection;
-import com.example.hesham.moves.Utilities.MoviesAPI;
-import com.example.hesham.moves.adapter.AdapterOFAllMovies.MoviesAdapter;
+import com.example.hesham.moves.adapter.MoviesAdapter;
 import com.example.hesham.moves.adapter.RecyclerTouchListener;
-import com.example.hesham.moves.model.modelaLLmovesdata.MovesModel;
-import com.example.hesham.moves.model.modelaLLmovesdata.ResultModel;
+import com.example.hesham.moves.async.FetchMovieTask;
+import com.example.hesham.moves.async.Movies;
+import com.example.hesham.moves.async.MyCallback;
 import com.example.hesham.moves.widget.NoteActiviy;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ServerValue;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MyCallback {
     private RecyclerView recyclerView;
     private MoviesAdapter adapter;
     GridLayoutManager gridLayoutManager;
-
-
-    MoviesAPI moviesAPI;
-    MovesModel PoplarModel;
-    MovesModel TopRateModel;
     private FirebaseAuth mAuth;
     private DatabaseReference mUserRef;
+    String popular = "http://api.themoviedb.org/3/movie/popular?";
+    String top_rated = "http://api.themoviedb.org/3/movie/top_rated?";
 
-
-    List<ResultModel> PopularResult = new ArrayList<>();
-    List<ResultModel> TopRateResult = new ArrayList<>();
-    List<ResultModel> Favourit = new ArrayList<>();
-    int flag = 0;
     public static final String API_KEY = "28f81313599c7074d6380330fe1dca22";
 
 
@@ -67,11 +54,11 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         gridLayoutManager = new GridLayoutManager(MainActivity.this, 2);
         recyclerView.setLayoutManager(gridLayoutManager);
+        CallApi(popular);
 
-
-        CallApi();
 
     }
+
 
     private void sendToStart() {
 
@@ -81,114 +68,14 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void CallApi() {
+
+    private void CallApi(String url) {
         if (InternetConnection.checkConnection(MainActivity.this)) {
-
-            Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl(MoviesAPI.BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build();
-
-            moviesAPI = retrofit.create(MoviesAPI.class);
-
-
-            Call<MovesModel> PopularRecall = moviesAPI.getAllMovesPopular();
-            PopularRecall.enqueue(new Callback<MovesModel>() {
-                @Override
-                public void onResponse(Call<MovesModel> call, Response<MovesModel> response) {
-                    if (response.isSuccessful()) {
-                        PoplarModel = response.body();
-//                        Log.e("Guinness", "p main" + PoplarModel.toString());
-
-                        PopularResult = PoplarModel.getResults();
-//                      Log.e("Guinness", response.toString());
-                        flag = 1;
-                        adapter = new MoviesAdapter(PopularResult, MainActivity.this);
-                        recyclerView.setAdapter(adapter);
-
-
-                    } else {
-//                        Log.d("Guinness", " the respons code of popular " + response.code());
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<MovesModel> call, Throwable t) {
-//                    Log.d("Guinness", "Respons get onFailure popular");
-
-                }
-            });
-
-
-            final Call<MovesModel> TopRate = moviesAPI.getAllMovestop_rated();
-            TopRate.enqueue(new Callback<MovesModel>() {
-                @Override
-                public void onResponse(Call<MovesModel> call, Response<MovesModel> response) {
-                    if (response.isSuccessful()) {
-                        TopRateModel = response.body();
-//                        Log.e("Guinness", "top " + TopRateModel.toString());
-
-                        TopRateResult = TopRateModel.getResults();
-//                        Log.d("Guinness", response.toString());
-                    } else {
-//                        Log.d("Guinness", " the respons code of TopRate " + response.code());
-
-                    }
-
-                }
-
-                @Override
-                public void onFailure(Call<MovesModel> call, Throwable t) {
-
-//                    Log.d("Guinness", "Respons get onFailure TopRate");
-
-                }
-            });
-
-            recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(),
-                    recyclerView, new RecyclerTouchListener.ClickListener() {
-
-                @Override
-                public void onClick(View view, int position) {
-                    if (InternetConnection.checkConnection(MainActivity.this)) {
-
-                        if (flag == 1) {
-
-                            Intent i = new Intent(MainActivity.this, Details.class);
-                            ResultModel model = getPopularResult().get(position);
-                            i.putExtra("sampleObject", model);
-                            startActivity(i);
-
-                        } else if (flag == 2) {
-
-                            Intent i = new Intent(MainActivity.this, Details.class);
-                            ResultModel model = getTopRateResult().get(position);
-                            i.putExtra("sampleObject", model);
-                            startActivity(i);
-
-                        } else if (flag == 3) {
-                            Intent i = new Intent(MainActivity.this, Details.class);
-                            ResultModel model = getFavourit().get(position);
-                            i.putExtra("sampleObject", model);
-                            startActivity(i);
-
-                        }
-
-                    } else {
-                        Toast.makeText(getApplicationContext(), getResources().getText(R.string.Nointernet), Toast.LENGTH_LONG).show();
-
-                    }
-                }
-
-                @Override
-                public void onLongClick(View view, int position) {
-
-                }
-            }));
-
+            FetchMovieTask moviesTask = new FetchMovieTask((MyCallback) this, this);
+            moviesTask.execute(url);
+        }else {
+            Toast.makeText(this,"there is no internet found",Toast.LENGTH_LONG).show();
         }
-
-
     }
 
 
@@ -209,15 +96,11 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.Pouplar) {
-            flag = 1;
-            adapter = new MoviesAdapter(getPopularResult(), MainActivity.this);
-            recyclerView.setAdapter(adapter);
+            CallApi(popular);
 
         }
         if (id == R.id.TopRate) {
-            flag = 2;
-            adapter = new MoviesAdapter(getTopRateResult(), MainActivity.this);
-            recyclerView.setAdapter(adapter);
+            CallApi(top_rated);
 
         }
         if (id == R.id.History) {
@@ -237,17 +120,25 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void updateAdapter(final List<Movies> movies) {
+        adapter = new MoviesAdapter(movies,
+                MainActivity.this,
+                new MoviesAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(Movies item) {
 
-    public List<ResultModel> getPopularResult() {
-        return PopularResult;
-    }
+                if (InternetConnection.checkConnection(MainActivity.this)) {
+                    Intent i = new Intent(MainActivity.this, Details.class);
+                    i.putExtra("sampleObject", (Serializable) item);
+                    startActivity(i);
+                }
+            }
+        });
+        recyclerView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
 
-    public List<ResultModel> getTopRateResult() {
-        return TopRateResult;
-    }
 
-    public List<ResultModel> getFavourit() {
-        return Favourit;
     }
 
 

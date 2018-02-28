@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.hesham.moves.Utilities.InternetConnection;
 import com.example.hesham.moves.Utilities.MoviesAPI;
+import com.example.hesham.moves.async.Movies;
 import com.example.hesham.moves.model.modelaLLmovesdata.ResultModel;
 import com.squareup.picasso.Picasso;
 
@@ -19,10 +20,9 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Details extends AppCompatActivity {
-    ResultModel model;
+    Movies model;
     ImageView img;
     TextView Title, data, Rate, Dec;
-    MoviesAPI moviesAPI;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -40,14 +40,8 @@ public class Details extends AppCompatActivity {
         Dec = (TextView) findViewById(R.id.Desc);
         img = (ImageView) findViewById(R.id.ImageOfResutl);
         if (InternetConnection.checkConnection(getApplicationContext())) {
-            Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl(MoviesAPI.BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build();
-
-            moviesAPI = retrofit.create(MoviesAPI.class);
             Intent i = getIntent();
-            model = (ResultModel) i.getSerializableExtra("sampleObject");
+            model = (Movies) i.getSerializableExtra("sampleObject");
             if (model != null) {
                 Title.setText(model.getTitle());
                 Dec.setText(model.getOverview());
