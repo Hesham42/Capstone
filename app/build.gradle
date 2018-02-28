@@ -5,7 +5,7 @@ android {
     buildToolsVersion "26.0.2"
     signingConfigs {
         release {
-            storeFile file('$rootDir/key.jks')
+            storeFile file("$rootDir/key.jks")
             storePassword "aw3awashak"
             keyAlias "guinness"
             keyPassword "aw3awashak"
