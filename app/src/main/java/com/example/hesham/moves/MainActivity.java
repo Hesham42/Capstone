@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements MyCallback {
             MovieTask moviesTask = new MovieTask((MyCallback) this, this);
             moviesTask.execute(url);
         }else {
-            Toast.makeText(this,"there is no internet found",Toast.LENGTH_LONG).show();
+            Toast.makeText(this,getResources().getString(R.string.no_request),Toast.LENGTH_LONG).show();
         }
     }
 
