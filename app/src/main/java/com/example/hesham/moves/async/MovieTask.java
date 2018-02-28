@@ -21,12 +21,12 @@ import java.util.List;
  * Created by root on 2/28/18.
  */
 
-public class FetchMovieTask extends AsyncTask<String, Void, List<Movies>> {
+public class MovieTask extends AsyncTask<String, Void, List<Movies>> {
 
     private final MyCallback movieTaskCallback;
     Context context;
 
-    public FetchMovieTask(MyCallback movieTaskCallback, Context context) {
+    public MovieTask(MyCallback movieTaskCallback, Context context) {
         this.movieTaskCallback = movieTaskCallback;
         this.context=context;
 

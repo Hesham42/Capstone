@@ -11,13 +11,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.hesham.moves.Utilities.InternetConnection;
-import com.example.hesham.moves.Utilities.MoviesAPI;
 import com.example.hesham.moves.async.Movies;
-import com.example.hesham.moves.model.modelaLLmovesdata.ResultModel;
 import com.squareup.picasso.Picasso;
-
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Details extends AppCompatActivity {
     Movies model;

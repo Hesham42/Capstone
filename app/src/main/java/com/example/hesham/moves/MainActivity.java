@@ -7,13 +7,11 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
 
 import com.example.hesham.moves.Utilities.InternetConnection;
 import com.example.hesham.moves.adapter.MoviesAdapter;
-import com.example.hesham.moves.adapter.RecyclerTouchListener;
-import com.example.hesham.moves.async.FetchMovieTask;
+import com.example.hesham.moves.async.MovieTask;
 import com.example.hesham.moves.async.Movies;
 import com.example.hesham.moves.async.MyCallback;
 import com.example.hesham.moves.widget.NoteActiviy;
@@ -23,7 +21,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ServerValue;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements MyCallback {
@@ -68,10 +65,19 @@ public class MainActivity extends AppCompatActivity implements MyCallback {
 
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+    }
 
     private void CallApi(String url) {
         if (InternetConnection.checkConnection(MainActivity.this)) {
-            FetchMovieTask moviesTask = new FetchMovieTask((MyCallback) this, this);
+            MovieTask moviesTask = new MovieTask((MyCallback) this, this);
             moviesTask.execute(url);
         }else {
             Toast.makeText(this,"there is no internet found",Toast.LENGTH_LONG).show();
@@ -120,8 +126,10 @@ public class MainActivity extends AppCompatActivity implements MyCallback {
 
     }
 
+
     @Override
     public void updateAdapter(final List<Movies> movies) {
+
         adapter = new MoviesAdapter(movies,
                 MainActivity.this,
                 new MoviesAdapter.OnItemClickListener() {
