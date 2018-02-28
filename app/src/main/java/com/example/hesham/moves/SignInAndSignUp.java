@@ -2,13 +2,13 @@ package com.example.hesham.moves;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.percent.PercentLayoutHelper;
 import android.support.percent.PercentRelativeLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.AppCompatTextView;
 import android.util.Log;
 import android.view.View;
@@ -30,7 +30,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class SignInAndSignUp extends AppCompatActivity {
-    private static final String TAG ="Guinness" ;
+    private static final String TAG = "Guinness";
     //---------------chatLogin----------------------------
     private DatabaseReference mDatabase;
     private FirebaseAuth mAuth;
@@ -44,7 +44,6 @@ public class SignInAndSignUp extends AppCompatActivity {
 
 
 //  ----------------------------------------
-
 
 
     private TextView tvSignupInvoker;
@@ -317,7 +316,7 @@ public class SignInAndSignUp extends AppCompatActivity {
 
     private void loginUser(String email, String password) {
         String emaitext = email;
-        String passwordtext =password ;
+        String passwordtext = password;
         mAuth.signInWithEmailAndPassword(emaitext, passwordtext)
                 .addOnCompleteListener(SignInAndSignUp.this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -333,7 +332,7 @@ public class SignInAndSignUp extends AppCompatActivity {
                         } else {
 
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                            Toast.makeText(SignInAndSignUp.this,R.string.error_email_exists,
+                            Toast.makeText(SignInAndSignUp.this, R.string.error_email_exists,
                                     Toast.LENGTH_SHORT).show();
 
                         }

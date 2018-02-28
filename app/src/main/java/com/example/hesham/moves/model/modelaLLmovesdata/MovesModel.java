@@ -1,9 +1,10 @@
 package com.example.hesham.moves.model.modelaLLmovesdata;
 
-import java.util.List;
-
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import java.util.List;
+
 public class MovesModel {
 
     @SerializedName("page")
@@ -20,6 +21,7 @@ public class MovesModel {
     @SerializedName("results")
     @Expose
     private List<ResultModel> results = null;
+
     public Integer getPage() {
         return page;
     }

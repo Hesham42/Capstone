@@ -1,4 +1,3 @@
-
 package com.example.hesham.moves.model.modelreviews;
 
 import com.google.gson.annotations.Expose;

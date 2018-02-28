@@ -30,20 +30,20 @@ public class Widgetprovider extends AppWidgetProvider {
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         // There may be multiple widgets active, so update all of them
-       final int Number= appWidgetIds.length;
-       for (int i=0;i<Number;++i){
-           RemoteViews remoteViews= new RemoteViews(context.getPackageName(),
-                   R.layout.widgetnote);
-           Intent intent = new Intent(context, Service.class);
-           intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetIds[i]);
-           intent.setData(Uri.parse(intent.toUri(Intent.URI_INTENT_SCHEME)));
-           remoteViews.setRemoteAdapter(appWidgetIds[i], R.id.widget_ListView, intent);
-           Intent intent2 = new Intent(context, NoteActiviy.class);
-           intent2.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetIds[i]);
-           PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent2, 0);
+        final int Number = appWidgetIds.length;
+        for (int i = 0; i < Number; ++i) {
+            RemoteViews remoteViews = new RemoteViews(context.getPackageName(),
+                    R.layout.widgetnote);
+            Intent intent = new Intent(context, Service.class);
+            intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetIds[i]);
+            intent.setData(Uri.parse(intent.toUri(Intent.URI_INTENT_SCHEME)));
+            remoteViews.setRemoteAdapter(appWidgetIds[i], R.id.widget_ListView, intent);
+            Intent intent2 = new Intent(context, NoteActiviy.class);
+            intent2.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetIds[i]);
+            PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent2, 0);
 
-           appWidgetManager.updateAppWidget(appWidgetIds[i], remoteViews);
-       }
+            appWidgetManager.updateAppWidget(appWidgetIds[i], remoteViews);
+        }
 
     }
 

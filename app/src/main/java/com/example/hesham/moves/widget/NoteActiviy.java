@@ -1,8 +1,8 @@
 package com.example.hesham.moves.widget;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -43,24 +43,28 @@ public class NoteActiviy extends AppCompatActivity {
             mMessagesDatabaseReference =
                     mFirebaseDatabase.getReference().child("message/" + currentUserEmail);
 
-        }catch (Exception e){
+        } catch (Exception e) {
             Toast.makeText(this, R.string.check, Toast.LENGTH_SHORT).show();
         }
         mChildEventListner = new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 ModelNote noteModel = dataSnapshot.getValue(ModelNote.class);
-               }
+            }
+
             @Override
             public void onChildChanged(DataSnapshot dataSnapshot, String s) {
             }
+
             @Override
             public void onChildRemoved(DataSnapshot dataSnapshot) {
             }
+
             @Override
             public void onChildMoved(DataSnapshot dataSnapshot, String s) {
 
             }
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
@@ -68,7 +72,7 @@ public class NoteActiviy extends AppCompatActivity {
         };
         try {
             mMessagesDatabaseReference.addChildEventListener(mChildEventListner);
-        }catch (Exception e){
+        } catch (Exception e) {
             Toast.makeText(this, R.string.check, Toast.LENGTH_SHORT).show();
         }
 
@@ -76,7 +80,7 @@ public class NoteActiviy extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (editText.getText().toString().equals("") ) {
+                if (editText.getText().toString().equals("")) {
                     Toast.makeText(NoteActiviy.this, R.string.no_request, Toast.LENGTH_SHORT).show();
                 } else {
                     String title = editText.getText().toString();

@@ -6,5 +6,5 @@
         android:id="@+id/widget_ListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#756e2c2c"/>
+        android:background="#756e2c2c" />
 </RelativeLayout>

@@ -1,8 +1,5 @@
 package com.example.hesham.moves.Utilities;
 
-import android.util.Log;
-
-import com.example.hesham.moves.BuildConfig;
 import com.example.hesham.moves.model.modelVedio.Trial;
 import com.example.hesham.moves.model.modelaLLmovesdata.MovesModel;
 import com.example.hesham.moves.model.modelreviews.Reviews;
@@ -22,13 +19,16 @@ import static com.example.hesham.moves.MainActivity.API_KEY;
 public interface MoviesAPI {
     String BASE_URL = "http://api.themoviedb.org";
 
-    @GET("/3/movie/popular?api_key="+API_KEY)
+    @GET("/3/movie/popular?api_key=" + API_KEY)
     Call<MovesModel> getAllMovesPopular();
-    @GET("/3/movie/top_rated?api_key="+API_KEY)
+
+    @GET("/3/movie/top_rated?api_key=" + API_KEY)
     Call<MovesModel> getAllMovestop_rated();
-    @GET("/3/movie/{id}/videos?api_key="+API_KEY)
+
+    @GET("/3/movie/{id}/videos?api_key=" + API_KEY)
     Call<Trial> selectedVedio(@Path("id") int id);
-    @GET("/3/movie/{id}/Reviews?api_key="+API_KEY)
+
+    @GET("/3/movie/{id}/Reviews?api_key=" + API_KEY)
     Call<Reviews> selectedReviews(@Path("id") int id);
 
 }

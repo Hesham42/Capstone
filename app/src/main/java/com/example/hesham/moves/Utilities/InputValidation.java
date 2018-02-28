@@ -43,11 +43,12 @@ public class InputValidation {
 
         return true;
     }
+
     public boolean isInputEditTextFilledPasswordLength(TextInputEditText textInputEditText,
                                                        TextInputLayout textInputLayout,
                                                        String message) {
         String value = textInputEditText.getText().toString().trim();
-        if (value.length()<4||value.isEmpty()) {
+        if (value.length() < 4 || value.isEmpty()) {
             textInputLayout.setError(message);
             hideKeyboardFrom(textInputEditText);
             return false;

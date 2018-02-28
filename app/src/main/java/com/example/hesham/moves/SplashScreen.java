@@ -1,9 +1,9 @@
 package com.example.hesham.moves;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -24,7 +24,7 @@ public class SplashScreen extends AppCompatActivity {
         mRunnable = new Runnable() {
             @Override
             public void run() {
-                FirebaseUser CrrentUser=mAuth.getCurrentUser();
+                FirebaseUser CrrentUser = mAuth.getCurrentUser();
 
                 if (CrrentUser != null) {
                     Intent Home_intent = new Intent(SplashScreen.this, MainActivity.class);

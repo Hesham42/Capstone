@@ -18,10 +18,8 @@ public class CommentUpdateModel {
     public CommentUpdateModel() {
     }
 
-    public static CommentUpdateModel getInstance()
-    {
-        if (mInstance == null)
-        {
+    public static CommentUpdateModel getInstance() {
+        if (mInstance == null) {
             mInstance = new CommentUpdateModel();
         }
         return mInstance;
@@ -43,7 +41,6 @@ public class CommentUpdateModel {
             onCommentAddedListener.commentDelete();
         }
     }
-
 
 
     public int getPosition() {

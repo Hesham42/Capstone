@@ -2,7 +2,7 @@ package com.example.hesham.moves;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * MovesModel local unit test, which will execute on the development machine (host).

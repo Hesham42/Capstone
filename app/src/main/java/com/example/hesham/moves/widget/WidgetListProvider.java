@@ -49,7 +49,7 @@ public class WidgetListProvider implements RemoteViewsService.RemoteViewsFactory
             String currentUserEmail = user.getEmail().replace(".", "_");
             mMessagesDatabaseReference = mFirebaseDatabase.getReference().child("message/" + currentUserEmail);
 
-        }catch (Exception e) {
+        } catch (Exception e) {
         }
         mChildEventListner = new ChildEventListener() {
             @Override
@@ -82,7 +82,7 @@ public class WidgetListProvider implements RemoteViewsService.RemoteViewsFactory
         };
         try {
             mMessagesDatabaseReference.addChildEventListener(mChildEventListner);
-        }catch (Exception e){
+        } catch (Exception e) {
 
         }
     }
@@ -98,7 +98,7 @@ public class WidgetListProvider implements RemoteViewsService.RemoteViewsFactory
     @Override
     public RemoteViews getViewAt(int position) {
         final RemoteViews remoteView = new RemoteViews(
-                context.getPackageName(),  R.layout.itemwidget);
+                context.getPackageName(), R.layout.itemwidget);
 
         remoteView.setTextViewText(R.id.NoteTitle, noteModelList.get(position).getnote());
 
@@ -110,7 +110,6 @@ public class WidgetListProvider implements RemoteViewsService.RemoteViewsFactory
     public int getCount() {
         return noteModelList.size();
     }
-
 
 
     @Override
@@ -142,4 +141,5 @@ public class WidgetListProvider implements RemoteViewsService.RemoteViewsFactory
     @Override
     public int getViewTypeCount() {
         return 1;
-    }}
+    }
+}

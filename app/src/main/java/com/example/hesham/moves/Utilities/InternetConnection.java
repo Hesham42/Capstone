@@ -9,14 +9,6 @@ import android.net.ConnectivityManager;
 
 public class InternetConnection {
     public static boolean checkConnection(Context context) {
-        if (((ConnectivityManager)context.getSystemService(context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo()!=null)
-        {
-            return true;
-        }else
-        {
-
-            return false ;
-
-        }
+        return ((ConnectivityManager) context.getSystemService(context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo() != null;
     }
 }

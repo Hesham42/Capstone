@@ -1,8 +1,8 @@
 package com.example.hesham.moves;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
@@ -47,9 +47,8 @@ public class MainActivity extends AppCompatActivity {
     List<ResultModel> PopularResult = new ArrayList<>();
     List<ResultModel> TopRateResult = new ArrayList<>();
     List<ResultModel> Favourit = new ArrayList<>();
-    int flag=0;
+    int flag = 0;
     public static final String API_KEY = "28f81313599c7074d6380330fe1dca22";
-
 
 
     @Override
@@ -70,10 +69,10 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(gridLayoutManager);
 
 
-
         CallApi();
 
     }
+
     private void sendToStart() {
 
         Intent startIntent = new Intent(MainActivity.this, SignInAndSignUp.class);
@@ -82,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private  void CallApi() {
+    private void CallApi() {
         if (InternetConnection.checkConnection(MainActivity.this)) {
 
             Retrofit retrofit = new Retrofit.Builder()
@@ -103,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
 
                         PopularResult = PoplarModel.getResults();
 //                      Log.e("Guinness", response.toString());
-                        flag=1;
+                        flag = 1;
                         adapter = new MoviesAdapter(PopularResult, MainActivity.this);
                         recyclerView.setAdapter(adapter);
 
@@ -119,8 +118,6 @@ public class MainActivity extends AppCompatActivity {
 
                 }
             });
-
-
 
 
             final Call<MovesModel> TopRate = moviesAPI.getAllMovestop_rated();
@@ -177,8 +174,8 @@ public class MainActivity extends AppCompatActivity {
 
                         }
 
-                    }else {
-                        Toast.makeText(getApplicationContext(),getResources().getText(R.string.Nointernet), Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(getApplicationContext(), getResources().getText(R.string.Nointernet), Toast.LENGTH_LONG).show();
 
                     }
                 }
@@ -192,10 +189,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-
     }
-
-
 
 
     @Override
@@ -215,19 +209,19 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.Pouplar) {
-            flag=1;
+            flag = 1;
             adapter = new MoviesAdapter(getPopularResult(), MainActivity.this);
             recyclerView.setAdapter(adapter);
 
         }
         if (id == R.id.TopRate) {
-            flag=2;
+            flag = 2;
             adapter = new MoviesAdapter(getTopRateResult(), MainActivity.this);
             recyclerView.setAdapter(adapter);
 
         }
-        if (id==R.id.History){
-            Intent intent= new Intent(this, NoteActiviy.class);
+        if (id == R.id.History) {
+            Intent intent = new Intent(this, NoteActiviy.class);
             startActivity(intent);
         }
 
@@ -242,9 +236,6 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
 
     }
-
-
-
 
 
     public List<ResultModel> getPopularResult() {

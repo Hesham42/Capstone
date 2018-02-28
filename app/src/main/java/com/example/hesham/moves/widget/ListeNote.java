@@ -1,7 +1,7 @@
 package com.example.hesham.moves.widget;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ListView;
 
@@ -38,7 +38,7 @@ public class ListeNote extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_liste_note);
         ButterKnife.bind(this);
-        noteModelNoteList =new ArrayList<>();
+        noteModelNoteList = new ArrayList<>();
         adapter = new Adapter(this, R.layout.itemwidget, noteModelNoteList);
         noteslist.setAdapter(adapter);
         mFirebaseDatabase = FirebaseDatabase.getInstance();
@@ -50,7 +50,7 @@ public class ListeNote extends AppCompatActivity {
             String currentUserEmail = user.getEmail().replace(".", "_");
             mMessagesDatabaseReference = mFirebaseDatabase.getReference().child("message/" + currentUserEmail);
 
-        }catch (Exception e) {
+        } catch (Exception e) {
         }
         mChildEventListner = new ChildEventListener() {
             @Override
@@ -84,7 +84,7 @@ public class ListeNote extends AppCompatActivity {
         };
         try {
             mMessagesDatabaseReference.addChildEventListener(mChildEventListner);
-        }catch (Exception e){
+        } catch (Exception e) {
 
         }
 

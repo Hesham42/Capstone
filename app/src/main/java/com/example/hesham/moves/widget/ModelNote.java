@@ -7,6 +7,7 @@ package com.example.hesham.moves.widget;
 public class ModelNote {
 
     public String note;
+
     public ModelNote() {
     }
 

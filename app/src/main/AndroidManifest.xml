@@ -28,8 +28,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".SignInAndSignUp">
-        </activity>
+        <activity android:name=".SignInAndSignUp"></activity>
 
         <receiver android:name=".widget.Widgetprovider">
             <intent-filter>
